@@ -1,4 +1,4 @@
-namespace WebApplication1
+namespace WebApplication2
 {
     public class Program
     {
@@ -62,7 +62,7 @@ namespace WebApplication1
             {
                 return "List of all readers";
             });
-            app.MapPost("/readers/{id}", (int id) =>
+            app.MapGet("/readers/{id}", (int id) =>
             {
                 return $"Details of reader with id={id}";
             });
@@ -81,7 +81,27 @@ namespace WebApplication1
             });
 
 
-            app.MapGet("/Borrowings/overdue", () =>
+
+            app.MapGet("/borrowings", () =>
+            {
+                return "List of all borrowings";
+            });
+            app.MapPost("/borrowings", () =>
+            {
+                return "Borrowing created successfully";
+            });
+            app.MapPut("/borrowings/{id}", (int id) =>
+            {
+                return $"Borrowings with id={id} updated successfully";
+            });
+            app.MapDelete("/borrowings/{id}", (int id) =>
+            {
+                return $"Borrowing with id={id} cancelled successfully";
+            });
+
+
+
+            app.MapGet("/borrowings/overdue", () =>
             {
                 return new
                 {
@@ -108,9 +128,10 @@ namespace WebApplication1
             app.Run();
         }
     }
-}   
-    
+}
 
 
-    
+
+
+
 
